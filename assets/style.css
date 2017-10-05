@@ -2,3 +2,34 @@ html {
   font-size: 24px;
   color: #333;
 }
+
+.device {
+    margin-left: auto;
+    margin-right: auto;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.iphone7 {
+    background-image: url('/assets/images/iphone-7-white-mockup.png');
+    width: 1106px;
+    height: 1894px;
+}
+
+.iphone7 iframe {
+    position: absolute;
+    left: 160px;
+    top: 217px;
+    width: 749px;
+    height: 1333px;
+    border-width: 0px;
+}
+
+#mobile-container
+{
+    width: 375px;
+    height: 667px;
+    border: 1px solid #ccc;
+    margin: 0 auto;
+    margin-top: 2em;
+}
