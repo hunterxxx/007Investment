@@ -1,22 +1,6 @@
 {% extends "layout.html" %}
 {% block body %}
     <!-- start: mobile wrapper -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript">
-        function purchase() {
-            $.ajax({
-                type: 'GET',
-                url: 'https://007investment.table.core.windows.net:443/Transaction?sv=2016-05-31&si=Transaction-15EEC51E092&tn=transaction&sig=G%2BAfHj8oMMxKdTwj93q4KiR7tmnIPJdKkjwyHYdggpM%3D',
-                beforeSend: function(xhr) {
-                    xhr.setRequestHeader('Accept', 'application/json');
-                },
-                success: function (response) {
-                    var r = response;
-                }
-
-            })
-        }
-    </script>
     <div id="mobile-wrapper">
         <div class="new-transaction">
             <div class="header">
@@ -58,7 +42,7 @@
                         </li>
                     </ul>
                     <div class="btn-container">
-                        <a class="btn btn-primary btn-block" onclick="purchase()">Purchase Stock</a>
+                        <a class="btn btn-primary btn-block">Purchase Stock</a>
                     </div>
                 </div>
             </div>
