@@ -24,3 +24,12 @@ html {
     height: 1333px;
     border-width: 0px;
 }
+
+#mobile-container
+{
+    width: 375px;
+    height: 667px;
+    border: 1px solid #ccc;
+    margin: 0 auto;
+    margin-top: 2em;
+}
