@@ -12,6 +12,7 @@ ul, li
 {
   padding: 0;
   margin: 0;
+  list-style-type: none;
 }
 
 h1, h2, h3
@@ -40,6 +41,27 @@ h1, h2, h3
     width: 375px;
     height: 667px;
     border-width: 0px;
+}
+
+.tabs
+{
+  background-color: #f1f3f8;
+  display: flex;
+  flex-direction: row;
+}
+
+.tabs li
+{
+  padding: 1em;
+  flex-grow: 1;
+  color: black;
+  text-align: center;
+}
+
+.tabs li.active
+{
+  background-color: white;
+  font-weight: bold;
 }
 
 #mobile-wrapper
@@ -114,15 +136,20 @@ h1, h2, h3
 {
   height: 14em;
   position: relative;
+  background-image: url('../assets/images/stock-top-bg.jpg');
+  padding: 1em;
+  color: white;
 }
 
 .new-transaction .header .content-wrapper
 {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+}
+
+.new-transaction .header .spec
+{
+  border-bottom: none;
 }
 
 .new-transaction .stock-price
@@ -144,7 +171,6 @@ h1, h2, h3
 .spec
 {
   display: table;
-  font-size: .9em;
   width: 100%;
   margin-bottom: 1em;
   border-bottom: 1px solid #f2f2f2;
