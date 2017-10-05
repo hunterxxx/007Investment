@@ -26,10 +26,26 @@ class Landing_Page(object):
     def index(self):
         tmpl = env.get_template('index.html')
         return tmpl.render(name="Apple")
-    
+
+    @cherrypy.expose
+    def transactionHistory(self):
+        headers = {'Accept': 'application/json'}
+        url = "https://007investment.table.core.windows.net:443/Transaction?sv=2016-05-31&si=Transaction-15EEC51E092&tn=transaction&sig=G%2BAfHj8oMMxKdTwj93q4KiR7tmnIPJdKkjwyHYdggpM%3D"
+        response = requests.get(url, headers=headers)
+        j = response.json()
+        all_transactions= []
+
+        for value in j['value']:
+                price_paid=(float(value['Price'])*float(value['Amount']))
+                single_transaction = {'Timestamp': value['Timestamp'], 'StockId': value['StockId'], 'StockPrice': value['Price'], 'Amount': value['Amount'], 'MoneySpent': price_paid}
+                all_transactions.append(single_transaction)
+
+        tmpl = env.get_template('transactionHistory.html')
+        return tmpl.render(seq=all_transactions)
+
     @cherrypy.expose
     def newTransaction(self):
-        
+
         companyName=''
         stockName=''
         stockPrice=0
@@ -37,12 +53,12 @@ class Landing_Page(object):
         stockPercentage=0
         transAmount=0
         booking_date=''
-        
+
         # Print out a list of accounts including its balance
         #for account in session.accounts:
         #    print(account.name)
         #    print(account.balance)
-        
+
         headers = {'Accept': 'application/json'}
         url = "https://007investment.table.core.windows.net:443/Stock?sv=2016-05-31&si=Stock-15EEC52A495&tn=stock&sig=PbqLEW4Mi0hoNBw5nflEDszu36wzJ%2Bw592%2Bih%2BIfMI0%3D"
         response = requests.get(url, headers=headers)
@@ -51,7 +67,7 @@ class Landing_Page(object):
 
         # Print out the list of all transactions on a specific account
         for transaction in session.get_account("A1.1").transactions:
-            
+
             i = -1
             for stock in stocks['value']:
                 for name in stock['CompanyName'].split('\n'):
@@ -66,9 +82,9 @@ class Landing_Page(object):
                         transAmount=transaction.amount
                         booking_date=transaction.booking_date
                         print(str(transaction.amount)+" "+str(i))
-                        
+
         print(companyName+" / "+stockName+" / "+str(stockPrice)+" / "+str(stockPercentage))
-            
+
         tmpl = env.get_template('newTransaction.html')
         return tmpl.render(companyName=companyName,stockName=stockName,stockPrice=stockPrice,stockPercentage=round(stockPercentage,2),transAmount=transAmount,stockAmount=stockAmount,booking_date=str(booking_date).split(' ')[0])
 
