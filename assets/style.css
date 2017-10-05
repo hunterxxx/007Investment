@@ -3,6 +3,17 @@ html {
   color: #333;
 }
 
+a, a:hover, a:focus, a:visited
+{
+  text-decoration: none;
+}
+
+ul, li
+{
+  padding: 0;
+  margin: 0;
+}
+
 .device {
     margin-left: auto;
     margin-right: auto;
@@ -25,19 +36,20 @@ html {
     border-width: 0px;
 }
 
-#mobile-container
-{
-    width: 375px;
-    height: 667px;
-    border: 1px solid #ccc;
-    margin: 0 auto;
-    margin-top: 2em;
-}
-
 #mobile-wrapper
 {
     background: black;
     height: 667px;
+}
+
+/* START PAGE */
+
+#start-screen
+{
+  height: 100%;
+  background-image: url('../assets/images/iphone-start-screen.png');
+  padding: 65% .25em 0;
+
 }
 
 .push-notification
@@ -47,7 +59,8 @@ html {
   background-color: rgba(255, 255, 255, .8);
   border-radius: 8px;
   padding: 1em;
-/*  visibility: hidden;
+  color: black !important;
+  /*  visibility: hidden;
   opacity: 0;*/
 }
 
@@ -80,29 +93,21 @@ html {
   font-weight: bold;
 }
 
-ul, li
+/* NEW TRANSACTION PAGE */
+
+.new-transaction
 {
-  padding: 0;
-  margin: 0;
+  background-color: white;
 }
 
-#mobile-container
+.new-transaction .header
 {
-  width: 375px;
-  height: 677px;
-  margin: 0 auto;
-  margin-top: 1em;
-  background: white;
-}
-
-#mobile-container .header
-{
-  height: 10em;
+  height: 14em;
   position: relative;
   background-color: #f2f2f2;
 }
 
-#mobile-container .header .content-wrapper
+.new-transaction .header .content-wrapper
 {
   display: flex;
   flex-direction: column;
@@ -111,13 +116,12 @@ ul, li
   height: 100%;
 }
 
-#mobile-container .stock-price
+.new-transaction .stock-price
 {
   margin-bottom: 0;
 }
 
-
-#mobile-container .content
+.new-transaction .content
 {
   padding: 1em;
 }
@@ -127,7 +131,9 @@ ul, li
   display: table;
   font-size: .9em;
   width: 100%;
-  margin-bottom: .5em;
+  margin-bottom: 1em;
+  border-bottom: 1px solid #f2f2f2;
+  padding-bottom: 1em;
 }
 
 .spec > *
@@ -151,7 +157,7 @@ ul, li
 .spec .amount
 {
   font-weight: bold;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 

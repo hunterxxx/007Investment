@@ -1,56 +1,52 @@
 {% extends "layout.html" %}
 {% block body %}
+    <!-- start: mobile wrapper -->
     <div id="mobile-wrapper">
-        <!-- start: mobile wrapper -->
-        <div id="mobile-container">
-  <div class="stock-overview">
-    <div class="header">
-      <div class="content-wrapper">
-      <h2 class="stock-price">{{ stockPrice }}</h2>
-        <span class="sub-text">({{ companyName }})</span>
-      </div>
-    </div>
-    
-    <div class="content">
-     <div class="specs-container">
-       <ul class="specs">
-         <li class="spec">
-           <div class="left">
-            <p class="title">Original Purchase:</p>
-             <span class="sub-text">({{booking_date}})
-           </div>
-           <div class="right">
-             <h3 class="amount">{{ transAmount }}€</h3>
-             <span class="sub-text">({{ companyName }})</span>
-           </div>
-         </li>
-         <li class="spec">
-           <div class="left">
-            <p class="title">Amount Purchased:</p>
-           </div>
-           <div class="right">
-             <h3 class="amount">{{ stockPercentage }}</h3>
-             <span class="sub-text">(shares)</span>
-           </div>
-         </li>
-         <li class="spec">
-           <div class="left">
-            <p class="title">Investment Amount:</p>
-           </div>
-           <div class="right">
-             <h3 class="amount">{{ stockAmount }}€</h3>
-             <span class="sub-text">(1% of transaction)</span>
-           </div>
-         </li>
-       </ul>
-       <div class="btn-container">
-         <a class="btn btn-primary btn-block">Purchase Stock</a>
-       </div>
-      </div>
-    </div>
-  </div>
-</div>
-
+        <div class="new-transaction">
+            <div class="header">
+                <div class="content-wrapper">
+                    <h2 class="stock-price">{{ stockPrice }}</h2>
+                    <span class="sub-text">({{ companyName }})</span>
+                </div>
+            </div>
+            <div class="content">
+                <div class="specs-container">
+                    <ul class="specs">
+                        <li class="spec">
+                            <div class="left">
+                                <p class="title">Original Purchase:</p>
+                                <span class="sub-text">({{booking_date}})</span>
+                            </div>
+                            <div class="right">
+                                <h3 class="amount">{{ transAmount }}€</h3>
+                                <span class="sub-text">({{ companyName }})</span>
+                            </div>
+                        </li>
+                        <li class="spec">
+                            <div class="left">
+                                <p class="title">Amount Purchased:</p>
+                            </div>
+                           <div class="right">
+                                <h3 class="amount">{{ stockPercentage }}</h3>
+                                <span class="sub-text">(shares)</span>
+                           </div>
+                        </li>
+                        <li class="spec">
+                            <div class="left">
+                                <p class="title">Investment Amount:</p>
+                           </div>
+                           <div class="right">
+                                <h3 class="amount">{{ stockAmount }}€</h3>
+                                <span class="sub-text">(1% of transaction)</span>
+                           </div>
+                        </li>
+                    </ul>
+                    <div class="btn-container">
+                        <a class="btn btn-primary btn-block">Purchase Stock</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     <!-- end: mobile wrapper -->
     </div>
 {% endblock %}
