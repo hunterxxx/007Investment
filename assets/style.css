@@ -14,6 +14,11 @@ ul, li
   margin: 0;
 }
 
+h1, h2, h3
+{
+  margin: 0;
+}
+
 .device {
     margin-left: auto;
     margin-right: auto;
@@ -96,9 +101,9 @@ ul, li
 
 /* NEW TRANSACTION PAGE */
 
-.new-transaction
+.new-transaction, .transaction-history
 {
-  background-color: white;
+  background-color: #f2f2f2;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -109,7 +114,6 @@ ul, li
 {
   height: 14em;
   position: relative;
-  background-color: #f2f2f2;
 }
 
 .new-transaction .header .content-wrapper
@@ -126,10 +130,15 @@ ul, li
   margin-bottom: 0;
 }
 
-.new-transaction .content
+.new-transaction .content, .transaction-history .content
 {
   padding: 1em;
   flex: 1 0 auto;
+}
+
+.new-transaction .content
+{
+  background-color: white;
 }
 
 .spec
@@ -166,6 +175,25 @@ ul, li
   margin: 0;
 }
 
+/* Transaction History */
+
+.transaction-history
+{
+  background-color: #f2f2f2;
+}
+
+.transaction
+{
+  background-color: white;
+  border-radius: 8px;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.transaction .header > *
+{
+  vertical-align: top;
+}
 
 
 
