@@ -66,7 +66,7 @@ class Landing_Page(object):
         print(companyName+" / "+stockName+" / "+str(stockPrice)+" / "+str(stockPercentage))
             
         tmpl = env.get_template('newTransaction.html')
-        return tmpl.render(companyName=companyName,stockName=stockName,stockPrice=stockPrice,stockPercentage=round(stockPercentage,2),transAmount=transAmount,stockAmount=stockAmount,booking_date=booking_date)
+        return tmpl.render(companyName=companyName,stockName=stockName,stockPrice=stockPrice,stockPercentage=round(stockPercentage,2),transAmount=transAmount,stockAmount=stockAmount,booking_date=str(booking_date).split(' ')[0])
 
 
 config = {

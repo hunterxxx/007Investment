@@ -2,26 +2,29 @@
 {% block body %}
     <!-- start: mobile wrapper -->
     <div id="mobile-wrapper">
-        <div class="push-notification" id="purchase-made">
-            <div class="header">
-                <div class="left">
-                    <div class="img-container">
-                        <!-- place logo here -->
+        <div id="start-screen">
+            <a href="/newTransaction">
+                <div class="push-notification" id="purchase-made">
+                    <div class="header">
+                        <div class="left">
+                            <div class="img-container">
+                                <!-- place logo here -->
+                            </div>
+                            <p class="sender-name">007 Investments</p>
+                        </div>
+                        <div class="right">
+                            <p class="time">now</p>
+                        </div>
                     </div>
-                    <p class="sender-name">007 Investments</p>
+                    <div class="content">
+                        <div class="message">
+                            <p class="headline">You've made a purchase</p>
+                            <p>It looks like you just made a purchase with {{ name }}. Would you also like to invest?</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="right">
-                    <p class="time">now</p>
-                </div>
-            </div>
-            <div class="content">
-                <div class="message">
-                    <p class="headline">You've made a purchase</p>
-                    <p>It looks like you just made a purchase with {{ name }}. Would you also like to invest?</p>
-                </div>
-            </div>
+            </a>
         </div>
-        <a id="toggle-notification-vis"class="btn btn-secondary">toggle</a>
     <!-- end: mobile wrapper -->
     </div>
 {% endblock %}
