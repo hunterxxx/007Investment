@@ -22,6 +22,11 @@ class Landing_Page(object):
     def index(self):
         tmpl = env.get_template('index.html')
         return tmpl.render(name="Apple")
+        
+    @cherrypy.expose
+    def transactionHistory(self):
+        tmpl = env.get_template('transactionHistory.html')
+        return tmpl.render()
     
     @cherrypy.expose
     def newTransaction(self):
@@ -66,7 +71,7 @@ class Landing_Page(object):
         print(companyName+" / "+stockName+" / "+str(stockPrice)+" / "+str(stockPercentage))
             
         tmpl = env.get_template('newTransaction.html')
-        return tmpl.render(companyName=companyName,stockName=stockName,stockPrice=stockPrice,stockPercentage=round(stockPercentage,2),transAmount=transAmount,stockAmount=stockAmount,booking_date=booking_date)
+        return tmpl.render(companyName=companyName,stockName=stockName,stockPrice=stockPrice,stockPercentage=round(stockPercentage,2),transAmount=transAmount,stockAmount=stockAmount,booking_date=str(booking_date).split(' ')[0])
 
 
 config = {
