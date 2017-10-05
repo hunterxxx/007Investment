@@ -1,3 +1,7 @@
+import json
+import requests
+
+#
 import cherrypy
 
 #html request
@@ -85,6 +89,30 @@ class Landing_Page(object):
         tmpl = env.get_template('newTransaction.html')
         return tmpl.render(companyName=companyName,stockName=stockName,stockPrice=stockPrice,stockPercentage=round(stockPercentage,2),transAmount=transAmount,stockAmount=stockAmount,booking_date=str(booking_date).split(' ')[0])
 
+
+    @cherrypy.expose
+    def myLink(self): 
+        headers = {'Content-Type': 'application/json', 'Accept': 'application/json'}
+
+        payload = {  
+            "PartitionKey": "10-2017",
+            "RowKey": "48",
+            "UserId": "1",
+            "StockId": "1",
+            "Price": 10.6,
+            "Status": "pending"
+                }
+
+        r = requests.post("https://007investment.table.core.windows.net:443/Transaction?sv=2016-05-31&si=Transaction-15EEC51E092&tn=transaction&sig=G%2BAfHj8oMMxKdTwj93q4KiR7tmnIPJdKkjwyHYdggpM%3D", data=json.dumps(payload), headers=headers)
+        #print(r.url)
+        print(r.text)
+        print(r.status_code)
+        status = r.status_code
+        print(r.headers) 
+        header = r.headers
+        text = r.text
+        tmpl = env.get_template('post_success.html')
+        return tmpl.render(name="post", status=status, header=header, text=text)
 
 config = {
     'global': {
