@@ -99,7 +99,8 @@ class Landing_Page(object):
             "UserId": "1",
             "StockId": "1",
             "Price": 10.6,
-            "Status": "pending"
+            "Status": "pending",
+            "Amount": 100
                 }
 
         r = requests.post("https://007investment.table.core.windows.net:443/Transaction?sv=2016-05-31&si=Transaction-15EEC51E092&tn=transaction&sig=G%2BAfHj8oMMxKdTwj93q4KiR7tmnIPJdKkjwyHYdggpM%3D", data=json.dumps(payload), headers=headers)
@@ -111,7 +112,7 @@ class Landing_Page(object):
         header = r.headers
         text = r.text
         tmpl = env.get_template('post_success.html')
-        return tmpl.render(name="post", status=status, header=header, text=text)
+        return tmpl.render(status=status, header=header, text=text)
 
 config = {
     'global': {
