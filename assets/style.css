@@ -16,7 +16,7 @@ html {
     height: 1894px;
 }
 
-.iphone7 iframe {
+.iphone7 #i_inner {
     position: absolute;
     left: 80px;
     top: 108px;

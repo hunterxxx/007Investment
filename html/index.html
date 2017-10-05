@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Cherrypy Heroku pptx</title>    
-        <link rel="stylesheet" href="../assets/style.css">
-        <link rel="text/javascript" href="../assets/scripts.js">
-        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-    </head>
-    <body>
+{% extends "layout.html" %}
+{% block body %}
         <div id="mobile-wrapper">
             <!-- start: mobile wrapper -->
             <div class="push-notification" id="purchase-made">
@@ -25,7 +17,7 @@
                 <div class="content">
                     <div class="message">
                         <p class="headline">You've made a purchase</p>
-                        <p>It looks like you just made a purchase with []. Would you also like to invest?</p>
+                        <p>It looks like you just made a purchase with {{ name }}. Would you also like to invest?</p>
                     </div>
                 </div>
             </div>
@@ -33,5 +25,4 @@
 
         <!-- end: mobile wrapper -->
         </div>
-    </body>
-</html>
+{% endblock %}
