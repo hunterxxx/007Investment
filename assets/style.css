@@ -103,7 +103,7 @@ h1, h2, h3
 
 .new-transaction, .transaction-history
 {
-  background-color: white;
+  background-color: #f2f2f2;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -114,7 +114,6 @@ h1, h2, h3
 {
   height: 14em;
   position: relative;
-  background-color: #f2f2f2;
 }
 
 .new-transaction .header .content-wrapper
@@ -135,6 +134,11 @@ h1, h2, h3
 {
   padding: 1em;
   flex: 1 0 auto;
+}
+
+.new-transaction .content
+{
+  background-color: white;
 }
 
 .spec
@@ -172,6 +176,19 @@ h1, h2, h3
 }
 
 /* Transaction History */
+
+.transaction-history
+{
+  background-color: #f2f2f2;
+}
+
+.transaction
+{
+  background-color: white;
+  border-radius: 8px;
+  padding: 1em;
+  margin-bottom: 1em;
+}
 
 .transaction .header > *
 {
