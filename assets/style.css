@@ -223,3 +223,47 @@ h1, h2, h3
 
 
 
+.transaction-history .footer {
+    border-top: 2px solid rgb(247, 247, 247);
+    background-image: url('../assets/images/footer-bg.png');
+    background-repeat: repeat-y;
+}
+
+.transaction-history .footer ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 5px 0px 0px 0px;
+}
+.transaction-history .footer li {
+    margin: 0px;
+    padding: 0px;
+    display: inline;
+    text-align: center;
+}
+.transaction-history .footer a {
+    display: inline-block;
+    min-height: 55px;
+    min-width: 85px;
+    background-position:  center top;
+    background-repeat: no-repeat;
+    padding-top: 30px;
+}
+
+.transaction-history .footer a.marketplace {
+    background-image: url('../assets/images/marketplace.png');
+}
+.transaction-history .footer a.portfolio {
+    background-image: url('../assets/images/portfolio.png');
+}
+.transaction-history .footer a.settings {
+    background-image: url('../assets/images/settings.png');
+}
+.transaction-history .footer a.transactions {
+    background-image: url('../assets/images/transactions.png');
+}
+
+/*
+.transaction-history .footer a.active, .transaction-history .footer:hover {
+    background-image: url('../assets/images/star-active.png');
+}
+*/
