@@ -11,14 +11,12 @@
                     <ul class="transactions">
                       <h1>Transaction History</h1>
 
-
                         {% for item in seq %}
                           <li class="transaction">
                                 <div class="header spec">
                                   <div class="left">
                                       <h3 class="stock-abbrev">AAPL</h3>
-                                    </div>
-                                    <div class="right">
+                                    </div><div class="right">
                                       <a href='#'>View transaction details</a>
                                     </div>
                                   </div>
@@ -29,8 +27,7 @@
                                     <div class="left">
                                       <h3 class="amount">{{ item['MoneySpent'] }}€</h3>
                                       <span class="sub-text">(Amount paid)</span>
-                                    </div>
-                                    <div class="right">
+                                    </div><div class="right">
                                       <h3 class="amount">{{ item['Amount'] }}</h3>
                                       <span class="sub-text">(# of shares)</span>
                                     </div>
