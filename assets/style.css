@@ -22,6 +22,7 @@ ul, li
 }
 
 .iphone7 {
+    margin-top: 2em;
     background-image: url('../assets/images/iphone-7-white-mockup.png');
     width: 1106px;
     height: 1894px;
@@ -39,7 +40,7 @@ ul, li
 #mobile-wrapper
 {
     background: black;
-    height: 667px;
+    height: 100%;
 }
 
 /* START PAGE */
@@ -98,6 +99,10 @@ ul, li
 .new-transaction
 {
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .new-transaction .header
@@ -124,6 +129,7 @@ ul, li
 .new-transaction .content
 {
   padding: 1em;
+  flex: 1 0 auto;
 }
 
 .spec
