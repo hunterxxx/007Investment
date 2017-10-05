@@ -9,29 +9,34 @@
             <div class="content">
                 <div class="transactions-container">
                     <ul class="transactions">
-                        <li class="transaction">
-                            <div class="header spec">
-                                <div class="left">
-                                    <h3 class="stock-abbrev">AAPL</h3>
-                                </div>
-                                <div class="right">
-                                    <a href='#'>View transaction details</a>
-                                </div>
-                            </div>
-                            <div class="mid-info">
-                                <p><b>Confirmed at:</b> 04.10.2017 | <b>Purchase on:</b> 04.10.2017</p>
-                            </div>
-                            <div class="transaction-summary spec">
-                                <div class="left">
-                                    <h3 class="amount">1.05€</h3>
-                                    <span class="sub-text">(Amount paid)</span>
-                                </div>
-                                <div class="right">
-                                    <h3 class="amount">.06€</h3>
-                                    <span class="sub-text">(# of shares)</span>
-                                </div>
-                            </div>
-                        </li>
+                      <h1>Transaction History</h1>
+
+
+                        {% for item in seq %}
+                          <li class="transaction">
+                                <div class="header spec">
+                                  <div class="left">
+                                      <h3 class="stock-abbrev">AAPL</h3>
+                                    </div>
+                                    <div class="right">
+                                      <a href='#'>View transaction details</a>
+                                    </div>
+                                  </div>
+                                  <div class="mid-info">
+                                    <p><b>Confirmed at:</b> {{ item['Timestamp'] }} | <b>Purchase on:</b> 04.10.2017</p>
+                                  </div>
+                                  <div class="transaction-summary spec">
+                                    <div class="left">
+                                      <h3 class="amount">{{ item['MoneySpent'] }}€</h3>
+                                      <span class="sub-text">(Amount paid)</span>
+                                    </div>
+                                    <div class="right">
+                                      <h3 class="amount">{{ item['Amount'] }}</h3>
+                                      <span class="sub-text">(# of shares)</span>
+                                    </div>
+                                  </div>
+                                </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
