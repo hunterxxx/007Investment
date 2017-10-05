@@ -22,10 +22,10 @@ config = {
         'server.socket_host': '0.0.0.0',
         'server.socket_port': int(os.environ.get('PORT', 5000)),
     },
-    '/assets': {
+    '/bower_components/bootstrap/dist/css/:' {
         'tools.staticdir.root': os.path.dirname(os.path.abspath(__file__)),
         'tools.staticdir.on': True,
-        'tools.staticdir.dir': 'assets',
+        'tools.staticdir.dir': 'bower_components/bootstrap/dist/css/'
     }
 }
 

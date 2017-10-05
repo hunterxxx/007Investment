@@ -2,3 +2,12 @@ html {
   font-size: 24px;
   color: #333;
 }
+
+#mobile-container
+{
+    width: 375px;
+    height: 667px;
+    border: 1px solid #ccc;
+    margin: 0 auto;
+    margin-top: 2em;
+}
