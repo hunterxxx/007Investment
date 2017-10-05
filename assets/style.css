@@ -25,15 +25,6 @@ html {
     border-width: 0px;
 }
 
-#mobile-container
-{
-    width: 375px;
-    height: 667px;
-    border: 1px solid #ccc;
-    margin: 0 auto;
-    margin-top: 2em;
-}
-
 #mobile-wrapper
 {
     background: black;
@@ -86,23 +77,19 @@ ul, li
   margin: 0;
 }
 
-#mobile-container
+.stock-overview
 {
-  width: 375px;
-  height: 677px;
-  margin: 0 auto;
-  margin-top: 1em;
-  background: white;
+  background-color: #f2f2f2;
 }
 
-#mobile-container .header
+.stock-overview .header
 {
   height: 10em;
   position: relative;
   background-color: #f2f2f2;
 }
 
-#mobile-container .header .content-wrapper
+.stock-overview .header .content-wrapper
 {
   display: flex;
   flex-direction: column;
@@ -111,13 +98,13 @@ ul, li
   height: 100%;
 }
 
-#mobile-container .stock-price
+.stock-overview .stock-price
 {
   margin-bottom: 0;
 }
 
 
-#mobile-container .content
+.stock-overview .content
 {
   padding: 1em;
 }
