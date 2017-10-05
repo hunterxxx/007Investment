@@ -11,7 +11,7 @@ html {
 }
 
 .iphone7 {
-    background-image: url('/assets/images/iphone-7-white-mockup.png');
+    background-image: url('../assets/images/iphone-7-white-mockup.png');
     width: 1106px;
     height: 1894px;
 }
@@ -33,3 +33,127 @@ html {
     margin: 0 auto;
     margin-top: 2em;
 }
+
+#mobile-wrapper
+{
+    background: black;
+    height: 667px;
+}
+
+.push-notification
+{
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, .8);
+  border-radius: 8px;
+  padding: 1em;
+/*  visibility: hidden;
+  opacity: 0;*/
+}
+
+.fade-in
+{
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+}
+
+.push-notification .header .left
+{
+  float: left;
+}
+
+.push-notification .header .right
+{
+  float: right;
+}
+
+.message p
+{
+  margin-bottom: 0;
+}
+
+.message .headline
+{
+  font-weight: bold;
+}
+
+ul, li
+{
+  padding: 0;
+  margin: 0;
+}
+
+#mobile-container
+{
+  width: 375px;
+  height: 677px;
+  margin: 0 auto;
+  margin-top: 1em;
+  background: white;
+}
+
+#mobile-container .header
+{
+  height: 10em;
+  position: relative;
+  background-color: #f2f2f2;
+}
+
+#mobile-container .header .content-wrapper
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#mobile-container .stock-price
+{
+  margin-bottom: 0;
+}
+
+
+#mobile-container .content
+{
+  padding: 1em;
+}
+
+.spec
+{
+  display: table;
+  font-size: .9em;
+  width: 100%;
+  margin-bottom: .5em;
+}
+
+.spec > *
+{
+  display: inline-table;
+  width: 50%;
+  vertical-align: top;
+}
+
+.spec .right
+{
+  text-align: right;
+}
+
+.spec .title
+{
+  margin-bottom: 0;
+  color: #555;
+}
+
+.spec .amount
+{
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+
+
+
