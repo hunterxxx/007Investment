@@ -26,11 +26,12 @@ class Landing_Page(object):
     @cherrypy.expose
     def transactionHistory(self):
         headers = {'Accept': 'application/json'}
+        # Rest call towards the "John Snow" mock account on DB
         url = "https://007investment.table.core.windows.net:443/Transaction?sv=2016-05-31&si=Transaction-15EEC51E092&tn=transaction&sig=G%2BAfHj8oMMxKdTwj93q4KiR7tmnIPJdKkjwyHYdggpM%3D"
         response = requests.get(url, headers=headers)
         j = response.json()
         all_transactions= []
-
+        #Make a list of all transactions with the fields below ('Timestamp' etc.)
         for value in j['value']:
                 price_paid=(float(value['Price'])*float(value['Amount']))
                 single_transaction = {'Timestamp': value['Timestamp'], 'StockId': value['StockId'], 'StockPrice': value['Price'], 'Amount': value['Amount'], 'MoneySpent': price_paid}
