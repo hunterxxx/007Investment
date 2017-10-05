@@ -12,6 +12,12 @@ ul, li
 {
   padding: 0;
   margin: 0;
+  list-style-type: none;
+}
+
+h1, h2, h3
+{
+  margin: 0;
 }
 
 .device {
@@ -22,6 +28,7 @@ ul, li
 }
 
 .iphone7 {
+    margin-top: 2em;
     background-image: url('../assets/images/iphone-7-white-mockup.png');
     width: 1106px;
     height: 1894px;
@@ -36,10 +43,31 @@ ul, li
     border-width: 0px;
 }
 
+.tabs
+{
+  background-color: #f1f3f8;
+  display: flex;
+  flex-direction: row;
+}
+
+.tabs li
+{
+  padding: 1em;
+  flex-grow: 1;
+  color: black;
+  text-align: center;
+}
+
+.tabs li.active
+{
+  background-color: white;
+  font-weight: bold;
+}
+
 #mobile-wrapper
 {
     background: black;
-    height: 667px;
+    height: 100%;
 }
 
 /* START PAGE */
@@ -95,25 +123,33 @@ ul, li
 
 /* NEW TRANSACTION PAGE */
 
-.new-transaction
+.new-transaction, .transaction-history
 {
-  background-color: white;
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .new-transaction .header
 {
   height: 14em;
   position: relative;
-  background-color: #f2f2f2;
+  background-image: url('../assets/images/stock-top-bg.jpg');
+  padding: 1em;
+  color: white;
 }
 
 .new-transaction .header .content-wrapper
 {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+}
+
+.new-transaction .header .spec
+{
+  border-bottom: none;
 }
 
 .new-transaction .stock-price
@@ -121,15 +157,20 @@ ul, li
   margin-bottom: 0;
 }
 
-.new-transaction .content
+.new-transaction .content, .transaction-history .content
 {
   padding: 1em;
+  flex: 1 0 auto;
+}
+
+.new-transaction .content
+{
+  background-color: white;
 }
 
 .spec
 {
   display: table;
-  font-size: .9em;
   width: 100%;
   margin-bottom: 1em;
   border-bottom: 1px solid #f2f2f2;
@@ -160,6 +201,25 @@ ul, li
   margin: 0;
 }
 
+/* Transaction History */
+
+.transaction-history
+{
+  background-color: #f2f2f2;
+}
+
+.transaction
+{
+  background-color: white;
+  border-radius: 8px;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.transaction .header > *
+{
+  vertical-align: top;
+}
 
 
 
