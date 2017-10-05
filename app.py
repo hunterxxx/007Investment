@@ -15,6 +15,8 @@ absDir = os.path.join(os.getcwd(), localDir)
 
 env = Environment(loader=FileSystemLoader('html'))
 
+percentage=-0.01
+
 class Landing_Page(object):
     @cherrypy.expose
     def index(self):
@@ -23,6 +25,13 @@ class Landing_Page(object):
     
     @cherrypy.expose
     def newTransaction(self):
+        
+        companyName=''
+        stockName=''
+        stockPrice=0
+        stockAmount=0
+        stockPercentage=0
+        
         # Print out a list of accounts including its balance
         #for account in session.accounts:
         #    print(account.name)
@@ -36,14 +45,21 @@ class Landing_Page(object):
 
         # Print out the list of all transactions on a specific account
         for transaction in session.get_account("A1.1").transactions:
-            #print(transaction.name.split(' ')[0])
-            #print(transaction.amount)
             
+            i = -1
             for stock in stocks['value']:
                 for name in stock['CompanyName'].split('\n'):
+                    i = i+1
                     #print(name.split(' ')[0] + "   "+transaction.name.split(' ')[0])
                     if name.split(' ')[0] == transaction.name.split(' ')[0]:
-                        print("MATCH: "+name.split(' ')[0])
+                        companyName = name.split(' ')[0]
+                        stockName = name
+                        stockPrice=stocks['value'][i]['Price']
+                        stockAmount=(transaction.amount*percentage)
+                        stockPercentage=((transaction.amount*percentage)/stocks['value'][i]['Price'])
+                        print(str(transaction.amount)+" "+str(i))
+                        
+        print(companyName+" / "+stockName+" / "+str(stockPrice)+" / "+str(stockPercentage))
             
         tmpl = env.get_template('newTransaction.html')
         return tmpl.render()
