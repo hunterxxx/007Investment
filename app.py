@@ -1,6 +1,6 @@
 import json
 import requests
-
+import datetime
 #
 import cherrypy
 
@@ -30,14 +30,18 @@ class Landing_Page(object):
     @cherrypy.expose
     def transactionHistory(self):
         headers = {'Accept': 'application/json'}
+        # Rest call towards the "John Snow" mock account on DB
         url = "https://007investment.table.core.windows.net:443/Transaction?sv=2016-05-31&si=Transaction-15EEC51E092&tn=transaction&sig=G%2BAfHj8oMMxKdTwj93q4KiR7tmnIPJdKkjwyHYdggpM%3D"
         response = requests.get(url, headers=headers)
         j = response.json()
         all_transactions= []
-
+        #Make a list of all transactions with the fields below ('Timestamp' etc.)
         for value in j['value']:
-                price_paid=(float(value['Price'])*float(value['Amount']))
-                single_transaction = {'Timestamp': value['Timestamp'], 'StockId': value['StockId'], 'StockPrice': value['Price'], 'Amount': value['Amount'], 'MoneySpent': price_paid}
+                price_paid_long =(float(value['Price'])*float(value['Amount']))
+                price_paid ="{0:.2f}".format(price_paid_long)
+                time_stamp=datetime.datetime.strptime(value['Timestamp'][0:10], "%Y-%m-%d").strftime("%d.%m.%Y")
+                
+                single_transaction = {'Timestamp': time_stamp , 'StockId': value['StockId'], 'StockPrice': value['Price'], 'Amount': value['Amount'], 'MoneySpent': price_paid}
                 all_transactions.append(single_transaction)
 
         tmpl = env.get_template('transactionHistory.html')
@@ -90,10 +94,10 @@ class Landing_Page(object):
 
 
     @cherrypy.expose
-    def myLink(self): 
+    def myLink(self):
         headers = {'Content-Type': 'application/json', 'Accept': 'application/json'}
 
-        payload = {  
+        payload = {
             "PartitionKey": "10-2017",
             "RowKey": "48",
             "UserId": "1",
@@ -108,7 +112,7 @@ class Landing_Page(object):
         print(r.text)
         print(r.status_code)
         status = r.status_code
-        print(r.headers) 
+        print(r.headers)
         header = r.headers
         text = r.text
         tmpl = env.get_template('post_success.html')
