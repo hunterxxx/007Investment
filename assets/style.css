@@ -14,6 +14,11 @@ ul, li
   margin: 0;
 }
 
+h1, h2, h3
+{
+  margin: 0;
+}
+
 .device {
     margin-left: auto;
     margin-right: auto;
@@ -96,7 +101,7 @@ ul, li
 
 /* NEW TRANSACTION PAGE */
 
-.new-transaction
+.new-transaction, .transaction-history
 {
   background-color: white;
   display: flex;
@@ -126,7 +131,7 @@ ul, li
   margin-bottom: 0;
 }
 
-.new-transaction .content
+.new-transaction .content, .transaction-history .content
 {
   padding: 1em;
   flex: 1 0 auto;
@@ -166,6 +171,12 @@ ul, li
   margin: 0;
 }
 
+/* Transaction History */
+
+.transaction .header > *
+{
+  vertical-align: top;
+}
 
 
 

@@ -1,8 +1,41 @@
 {% extends "layout.html" %}
 {% block body %}
+<!-- start: mobile wrapper -->
     <div id="mobile-wrapper">
-      <h1>Transaction History</h1>
-
+        <div class="transaction-history">
+            <div class="header">
+                <!-- add images here -->
+            </div>
+            <div class="content">
+                <div class="transactions-container">
+                    <ul class="transactions">
+                        <li class="transaction">
+                            <div class="header spec">
+                                <div class="left">
+                                    <h3 class="stock-abbrev">AAPL</h3>
+                                </div>
+                                <div class="right">
+                                    <a href='#'>View transaction details</a>
+                                </div>
+                            </div>
+                            <div class="mid-info">
+                                <p><b>Confirmed at:</b> 04.10.2017 | <b>Purchase on:</b> 04.10.2017</p>
+                            </div>
+                            <div class="transaction-summary spec">
+                                <div class="left">
+                                    <h3 class="amount">1.05€</h3>
+                                    <span class="sub-text">(Amount paid)</span>
+                                </div>
+                                <div class="right">
+                                    <h3 class="amount">.06€</h3>
+                                    <span class="sub-text">(# of shares)</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     <!-- end: mobile wrapper -->
     </div>
 {% endblock %}
