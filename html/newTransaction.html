@@ -6,8 +6,8 @@
   <div class="stock-overview">
     <div class="header">
       <div class="content-wrapper">
-      <h2 class="stock-price">37.06</h2>
-        <span class="sub-text">(Adidas)</span>
+      <h2 class="stock-price">{{ stockPrice }}</h2>
+        <span class="sub-text">({{ companyName }})</span>
       </div>
     </div>
     
@@ -17,11 +17,11 @@
          <li class="spec">
            <div class="left">
             <p class="title">Original Purchase:</p>
-             <span class="sub-text">(05.10.2017)
+             <span class="sub-text">({{booking_date}})
            </div>
            <div class="right">
-             <h3 class="amount">105.00€</h3>
-             <span class="sub-text">(Adidas)</span>
+             <h3 class="amount">{{ transAmount }}€</h3>
+             <span class="sub-text">({{ companyName }})</span>
            </div>
          </li>
          <li class="spec">
@@ -29,7 +29,7 @@
             <p class="title">Amount Purchased:</p>
            </div>
            <div class="right">
-             <h3 class="amount">.06€</h3>
+             <h3 class="amount">{{ stockPercentage }}</h3>
              <span class="sub-text">(shares)</span>
            </div>
          </li>
@@ -38,7 +38,7 @@
             <p class="title">Investment Amount:</p>
            </div>
            <div class="right">
-             <h3 class="amount">1.05€</h3>
+             <h3 class="amount">{{ stockAmount }}€</h3>
              <span class="sub-text">(1% of transaction)</span>
            </div>
          </li>

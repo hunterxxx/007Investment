@@ -31,6 +31,8 @@ class Landing_Page(object):
         stockPrice=0
         stockAmount=0
         stockPercentage=0
+        transAmount=0
+        booking_date=''
         
         # Print out a list of accounts including its balance
         #for account in session.accounts:
@@ -57,12 +59,14 @@ class Landing_Page(object):
                         stockPrice=stocks['value'][i]['Price']
                         stockAmount=(transaction.amount*percentage)
                         stockPercentage=((transaction.amount*percentage)/stocks['value'][i]['Price'])
+                        transAmount=transaction.amount
+                        booking_date=transaction.booking_date
                         print(str(transaction.amount)+" "+str(i))
                         
         print(companyName+" / "+stockName+" / "+str(stockPrice)+" / "+str(stockPercentage))
             
         tmpl = env.get_template('newTransaction.html')
-        return tmpl.render(name=companyName)
+        return tmpl.render(companyName=companyName,stockName=stockName,stockPrice=stockPrice,stockPercentage=round(stockPercentage,2),transAmount=transAmount,stockAmount=stockAmount,booking_date=booking_date)
 
 
 config = {
