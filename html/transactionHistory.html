@@ -3,6 +3,12 @@
     <div id="mobile-wrapper">
       <h1>Transaction History</h1>
 
+      <ul>
+        {% for item in seq %}
+          <li>{{ item['Timestamp'] }}</li>
+        {% endfor %}
+      </ul>
+
     <!-- end: mobile wrapper -->
     </div>
 {% endblock %}
