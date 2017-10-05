@@ -1,0 +1,20 @@
+{
+  "name": "007Investment",
+  "homepage": "https://github.com/hunterxxx/007Investment",
+  "authors": [
+    "Jaromír Pešout <jaromir@pesout.cz>"
+  ],
+  "description": "Collabothon 2017",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
