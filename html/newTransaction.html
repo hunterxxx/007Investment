@@ -1,6 +1,56 @@
 {% extends "layout.html" %}
 {% block body %}
-<ul>
-	<h2>New Transaction</h2>
-</ul>
+    <div id="mobile-wrapper">
+        <!-- start: mobile wrapper -->
+        <div id="mobile-container">
+  <div class="stock-overview">
+    <div class="header">
+      <div class="content-wrapper">
+      <h2 class="stock-price">37.06</h2>
+        <span class="sub-text">(Adidas)</span>
+      </div>
+    </div>
+    
+    <div class="content">
+     <div class="specs-container">
+       <ul class="specs">
+         <li class="spec">
+           <div class="left">
+            <p class="title">Original Purchase:</p>
+             <span class="sub-text">(05.10.2017)
+           </div>
+           <div class="right">
+             <h3 class="amount">105.00€</h3>
+             <span class="sub-text">(Adidas)</span>
+           </div>
+         </li>
+         <li class="spec">
+           <div class="left">
+            <p class="title">Amount Purchased:</p>
+           </div>
+           <div class="right">
+             <h3 class="amount">.06€</h3>
+             <span class="sub-text">(shares)</span>
+           </div>
+         </li>
+         <li class="spec">
+           <div class="left">
+            <p class="title">Investment Amount:</p>
+           </div>
+           <div class="right">
+             <h3 class="amount">1.05€</h3>
+             <span class="sub-text">(1% of transaction)</span>
+           </div>
+         </li>
+       </ul>
+       <div class="btn-container">
+         <a class="btn btn-primary btn-block">Purchase Stock</a>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- end: mobile wrapper -->
+    </div>
 {% endblock %}
