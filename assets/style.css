@@ -68,6 +68,7 @@ h1, h2, h3
 {
     background: black;
     height: 100%;
+    position: relative;
 }
 
 /* START PAGE */
@@ -157,7 +158,7 @@ h1, h2, h3
   margin-bottom: 0;
 }
 
-.new-transaction .content, .transaction-history .content
+.new-transaction .content
 {
   padding: 1em;
   flex: 1 0 auto;
@@ -221,14 +222,17 @@ h1, h2, h3
   vertical-align: top;
 }
 
-
+.transaction-history
+{
+  position: relative;
+  overflow-y: hidden;
+}
 
 .transaction-history h1 {
-    background-color: rgb(93, 120, 204);
-    color: rgb(255, 255, 255);    
+    color: white;
     text-align: center;
-    padding: 5px;    
-    font-size: 15pt;        
+    padding: 1em;
+    font-size: 1em;
 }
 
 .transaction-history .tabs ul {
@@ -247,10 +251,30 @@ h1, h2, h3
     min-width: 105px;
 }
 
+.transaction-history > .header
+{
+  position: absolute;
+  background-color: rgb(93, 120, 204);
+  padding-top: 1.5em;
+  width: 100%;
+}
+
+.transaction-history .header .img-container
+{
+  position: absolute;
+  top: 0;
+  left: .5em;
+}
+
 .transaction-history .footer {
     border-top: 2px solid rgb(247, 247, 247);
     background-image: url('../assets/images/footer-bg.png');
     background-repeat: repeat-y;
+    position: absolute;
+    bottom: 0;
+    padding-top: .5em;
+    border-top: 1px solid #ccc;
+    width: 100%;
 }
 
 .transaction-history .footer ul {
@@ -284,6 +308,14 @@ h1, h2, h3
 }
 .transaction-history .footer a.transactions {
     background-image: url('../assets/images/transactions.png');
+}
+
+.transaction-history .content
+{
+  padding: 1em;
+  overflow-y: auto;
+  margin-top: 4.5em;
+  margin-bottom: 4em;
 }
 
 /*
