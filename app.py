@@ -1,3 +1,7 @@
+import json
+import requests
+import datetime
+#
 import cherrypy
 
 #html request
@@ -26,16 +30,25 @@ class Landing_Page(object):
     @cherrypy.expose
     def transactionHistory(self):
         headers = {'Accept': 'application/json'}
+        # Rest call towards the "John Snow" mock account on DB
         url = "https://007investment.table.core.windows.net:443/Transaction?sv=2016-05-31&si=Transaction-15EEC51E092&tn=transaction&sig=G%2BAfHj8oMMxKdTwj93q4KiR7tmnIPJdKkjwyHYdggpM%3D"
         response = requests.get(url, headers=headers)
         j = response.json()
         all_transactions= []
-
+        #Make a list of all transactions with the fields below ('Timestamp' etc.)
         for value in j['value']:
-                price_paid=(float(value['Price'])*float(value['Amount']))
-                single_transaction = {'Timestamp': value['Timestamp'], 'StockId': value['StockId'], 'StockPrice': value['Price'], 'Amount': value['Amount'], 'MoneySpent': price_paid}
+                price_paid_long =(float(value['Price'])*float(value['Amount']))
+                price_paid ="{0:.2f}".format(price_paid_long)
+                time_stamp=datetime.datetime.strptime(value['Timestamp'][0:16], "%Y-%m-%dT%H:%M")
+                time_stamp_purch= time_stamp+datetime.timedelta(hours=3)
+                time_stamp= time_stamp.strftime("%d.%m.%Y %H:%M")
+                time_stamp_purch=time_stamp_purch.strftime("%d.%m.%Y %H:%M")
+                print(time_stamp_purch)
+                amount ="{0:.2f}".format(float(value['Amount']))
+                single_transaction = {'Timestamp': time_stamp ,'TimestampPurch':time_stamp_purch, 'StockId': value['StockId'], 'StockPrice': value['Price'], 'Amount': amount, 'MoneySpent': price_paid}
                 all_transactions.append(single_transaction)
 
+        all_transactions = sorted(all_transactions, key=lambda k: k['Timestamp'], reverse=True) 
         tmpl = env.get_template('transactionHistory.html')
         return tmpl.render(seq=all_transactions)
 
@@ -75,15 +88,50 @@ class Landing_Page(object):
                         stockPrice=stocks['value'][i]['Price']
                         stockAmount=(transaction.amount*percentage)
                         stockPercentage=((transaction.amount*percentage)/stocks['value'][i]['Price'])
-                        transAmount=transaction.amount
+                        transAmount=-1*transaction.amount
                         booking_date=transaction.booking_date
                         print(str(transaction.amount)+" "+str(i))
 
         print(companyName+" / "+stockName+" / "+str(stockPrice)+" / "+str(stockPercentage))
+        #Post Request
+        headers = {'Content-Type': 'application/json', 'Accept': 'application/json'}
 
+        payload = {
+            "PartitionKey": "10-2017",
+            "RowKey": "70",
+            "UserId": "1",
+            "StockId": "1",
+            "Price": stockPrice,
+            "Status": "confirmed",
+            "Amount": stockPercentage
+                }
+
+        r = requests.post("https://007investment.table.core.windows.net:443/Transaction?sv=2016-05-31&si=Transaction-15EEC51E092&tn=transaction&sig=G%2BAfHj8oMMxKdTwj93q4KiR7tmnIPJdKkjwyHYdggpM%3D", data=json.dumps(payload), headers=headers)
+        #End Post Request
         tmpl = env.get_template('newTransaction.html')
         return tmpl.render(companyName=companyName,stockName=stockName,stockPrice=stockPrice,stockPercentage=round(stockPercentage,2),transAmount=transAmount,stockAmount=stockAmount,booking_date=str(booking_date).split(' ')[0])
 
+
+    @cherrypy.expose
+    def myLink(self):
+        headers = {'Content-Type': 'application/json', 'Accept': 'application/json'}
+
+        payload = {
+            "PartitionKey": "10-2017",
+            "RowKey": "48",
+            "UserId": "1",
+            "StockId": "1",
+            "Price": 10.6,
+            "Status": "pending",
+            "Amount": 100
+                }
+
+        r = requests.post("https://007investment.table.core.windows.net:443/Transaction?sv=2016-05-31&si=Transaction-15EEC51E092&tn=transaction&sig=G%2BAfHj8oMMxKdTwj93q4KiR7tmnIPJdKkjwyHYdggpM%3D", data=json.dumps(payload), headers=headers)
+        status = r.status_code
+        header = r.headers
+        text = r.text
+        tmpl = env.get_template('post_success.html')
+        return tmpl.render(status=status, header=header, text=text)
 
 config = {
     'global': {

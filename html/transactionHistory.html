@@ -6,6 +6,9 @@
         
         <div class="transaction-history">
             <div class="header">
+                <div class="img-container">
+                  <img src="../assets/images/StatusBar.png"/>
+                </div>
                 <h1>Transaction History</h1>
             </div>
             
@@ -27,13 +30,15 @@
                           <li class="transaction">
                                 <div class="header spec">
                                   <div class="left">
-                                      <h3 class="stock-abbrev">AAPL</h3>
-                                    </div><div class="right">
+                                       <!-- <h3 class="stock-abbrev">{{item['StockId']}}</h3> -->
+                                    </div>
+                                    <div class="right">
                                       <a href='#'>View transaction details</a>
                                     </div>
                                   </div>
                                   <div class="mid-info">
-                                    <p><b>Confirmed at:</b> {{ item['Timestamp'] }} | <b>Purchase on:</b> 04.10.2017</p>
+                                    <p><b>Confirmed at:</b> {{ item['Timestamp'] }} <br>
+                                       <b>Purchase on:</b> {{item['TimestampPurch']}}</p>
                                   </div>
                                   <div class="transaction-summary spec">
                                     <div class="left">
