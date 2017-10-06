@@ -335,8 +335,16 @@ div.container4 p {
 .transaction-history .footer a.settings, .portfolio .footer a.settings {
     background-image: url('../assets/images/settings.png');
 }
-.transaction-history .footer a.transactions, .portfolio .footer a.transactions {
+.transaction-history .footer a.transactions {
     background-image: url('../assets/images/transactions.png');
+}
+
+.portfolio .footer a.transactions {
+    background-image: url('../assets/images/feed.svg');
+}
+
+.portfolio .footer a.portfolio {
+    background-image: url('../assets/images/profile-blue.svg');
 }
 
 .transaction-history .content
@@ -360,11 +368,11 @@ div.container4 p {
     background-color: rgba(255, 255, 255, 0.75);
     font-size: 22pt;
     text-transform: uppercase;
-    background-image: url('../assets/images/checkMark.svg');
-    background-position: center center;
+    background-image: url('../assets/images/success.svg');
+    background-position: center 40%;
     background-repeat: no-repeat;
     text-align: center;
-    padding-top: 400px;
+    padding-top: 330px;
     color: rgb(93, 120, 204);
     font-weight: bold;
     z-index: 10;
