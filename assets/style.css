@@ -328,13 +328,13 @@ div.container4 p {
 }
 
 .transaction-history .footer a.marketplace, .portfolio .footer a.marketplace {
-    background-image: url('../assets/images/marketplace.png');
+    background-image: url('../assets/images/marketplace.svg');
 }
 .transaction-history .footer a.portfolio, .portfolio .footer a.portfolio {
     background-image: url('../assets/images/portfolio.png');
 }
 .transaction-history .footer a.settings, .portfolio .footer a.settings {
-    background-image: url('../assets/images/settings.png');
+    background-image: url('../assets/images/settings.svg');
 }
 .transaction-history .footer a.transactions {
     background-image: url('../assets/images/transactions.png');
