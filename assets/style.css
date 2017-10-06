@@ -234,6 +234,18 @@ h3
   margin-bottom: 1em;
 }
 
+.transaction .link-container
+{
+  text-align: right;
+}
+
+.transaction .link-container a >*
+{
+  display: inline-block;
+  margin-left: .25em;
+  vertical-align: middle;
+}
+
 .transaction .header > *
 {
   vertical-align: top;
