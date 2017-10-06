@@ -109,7 +109,7 @@ class Landing_Page(object):
             allRow.append(int(value['RowKey']))
             print(value['RowKey'])
         rowKey= str(1+allRow.pop())
-        time=datetime.datetime.utcnow()
+        time= (datetime.timedelta(hours=2)+datetime.datetime.utcnow())
         headers = {'Content-Type': 'application/json', 'Accept': 'application/json'}
         payload = {
             "PartitionKey": "10-2017",
