@@ -87,7 +87,7 @@ class Landing_Page(object):
                         stockPrice=stocks['value'][i]['Price']
                         stockAmount=(transaction.amount*percentage)
                         stockPercentage=((transaction.amount*percentage)/stocks['value'][i]['Price'])
-                        transAmount=transaction.amount
+                        transAmount=-1*transaction.amount
                         booking_date=transaction.booking_date
                         print(str(transaction.amount)+" "+str(i))
 
