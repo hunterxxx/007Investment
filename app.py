@@ -26,6 +26,11 @@ class Landing_Page(object):
     def index(self):
         tmpl = env.get_template('index.html')
         return tmpl.render(name="Apple")
+        
+    @cherrypy.expose
+    def portfolio(self):
+        tmpl = env.get_template('portfolio.html')
+        return tmpl.render()
 
     @cherrypy.expose
     def transactionHistory(self):
