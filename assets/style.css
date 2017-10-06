@@ -223,6 +223,30 @@ h1, h2, h3
 
 
 
+.transaction-history h1 {
+    background-color: rgb(93, 120, 204);
+    color: rgb(255, 255, 255);    
+    text-align: center;
+    padding: 5px;    
+    font-size: 15pt;        
+}
+
+.transaction-history .tabs ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px 0px 5px 0px;
+}
+.transaction-history .tabs li {
+    margin: 0px;
+    padding: 0px;
+    display: inline;
+    text-align: center;
+}
+.transaction-history .tabs a {
+    display: inline-block;
+    min-width: 105px;
+}
+
 .transaction-history .footer {
     border-top: 2px solid rgb(247, 247, 247);
     background-image: url('../assets/images/footer-bg.png');

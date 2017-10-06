@@ -4,12 +4,22 @@
     <div id="mobile-wrapper">
         <div class="transaction-history">
             <div class="header">
-                <!-- add images here -->
+                <h1>Transaction History</h1>
             </div>
+            
             <div class="content">
                 <div class="transactions-container">
-                    <ul class="transactions">
-                      <h1>Transaction History</h1>
+                    <div class="transactions">
+
+                        <div class="tabs">
+                            <div class="content-wrapper">
+                                <ul>
+                                    <li><a href="#" class="pending">Pending</a></li>
+                                    <li><a href="#" class="confirmed active btn btn-primary">Confirmed</a></li>
+                                    <li><a href="#" class="denied">Denied</a></li>
+                                <ul>
+                            </div>
+                        </div>
 
                         {% for item in seq %}
                           <li class="transaction">
@@ -38,6 +48,8 @@
                 </div>
             </div>
 
+        </div>
+
             <div class="footer">
                 <div class="content-wrapper">
                     <ul>
@@ -48,7 +60,6 @@
                     <ul>
                 </div>
             </div>
-        </div>
 
     <!-- end: mobile wrapper -->
 
