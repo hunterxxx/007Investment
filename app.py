@@ -33,22 +33,20 @@ class Landing_Page(object):
         # Rest call towards the "John Snow" mock account on DB
         url = "https://007investment.table.core.windows.net:443/Transaction?sv=2016-05-31&si=Transaction-15EEC51E092&tn=transaction&sig=G%2BAfHj8oMMxKdTwj93q4KiR7tmnIPJdKkjwyHYdggpM%3D"
         response = requests.get(url, headers=headers)
-        j = response.json()
+        trans_j = response.json()
         all_transactions= []
+
         #Make a list of all transactions with the fields below ('Timestamp' etc.)
-        for value in j['value']:
+        for value in trans_j['value']:
                 price_paid_long =(float(value['Price'])*float(value['Amount']))
                 price_paid ="{0:.2f}".format(price_paid_long)
-                time_stamp=datetime.datetime.strptime(value['Timestamp'][0:16], "%Y-%m-%dT%H:%M")
-                time_stamp_purch= time_stamp+datetime.timedelta(hours=3)
-                time_stamp= time_stamp.strftime("%d.%m.%Y %H:%M")
-                time_stamp_purch=time_stamp_purch.strftime("%d.%m.%Y %H:%M")
-                print(time_stamp_purch)
+                time_stamp=datetime.datetime.strptime(value['Timestamp'][0:16], "%Y-%m-%dT%H:%M").strftime("%d.%m.%Y %H:%M")
+                time_stamp_purch= datetime.datetime.strptime(value['CreatedDate'][0:16], "%Y-%m-%dT%H:%M").strftime("%d.%m.%Y %H:%M")
                 amount ="{0:.2f}".format(float(value['Amount']))
                 single_transaction = {'Timestamp': time_stamp ,'TimestampPurch':time_stamp_purch, 'StockId': value['StockId'], 'StockPrice': value['Price'], 'Amount': amount, 'MoneySpent': price_paid}
                 all_transactions.append(single_transaction)
 
-        all_transactions = sorted(all_transactions, key=lambda k: k['Timestamp'], reverse=True) 
+        all_transactions = sorted(all_transactions, key=lambda k: k['Timestamp'], reverse=True)
         tmpl = env.get_template('transactionHistory.html')
         return tmpl.render(seq=all_transactions)
 
