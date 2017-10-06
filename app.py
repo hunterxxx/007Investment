@@ -39,26 +39,14 @@ class Landing_Page(object):
         for value in j['value']:
                 price_paid_long =(float(value['Price'])*float(value['Amount']))
                 price_paid ="{0:.2f}".format(price_paid_long)
-                time_stamp=datetime.datetime.strptime(value['Timestamp'][0:10], "%Y-%m-%d").strftime("%d.%m.%Y")
-                
-                single_transaction = {'Timestamp': time_stamp , 'StockId': value['StockId'], 'StockPrice': value['Price'], 'Amount': value['Amount'], 'MoneySpent': price_paid}
+                time_stamp=datetime.datetime.strptime(value['Timestamp'][0:16], "%Y-%m-%dT%H:%M")
+                time_stamp_purch= time_stamp+datetime.timedelta(hours=3)
+                time_stamp= time_stamp.strftime("%d.%m.%Y %H:%M")
+                time_stamp_purch=time_stamp_purch.strftime("%d.%m.%Y %H:%M")
+                print(time_stamp_purch)
+                amount ="{0:.2f}".format(float(value['Amount']))
+                single_transaction = {'Timestamp': time_stamp ,'TimestampPurch':time_stamp_purch, 'StockId': value['StockId'], 'StockPrice': value['Price'], 'Amount': amount, 'MoneySpent': price_paid}
                 all_transactions.append(single_transaction)
-
-        #Post Request
-        headers = {'Content-Type': 'application/json', 'Accept': 'application/json'}
-
-        payload = {
-            "PartitionKey": "10-2017",
-            "RowKey": "55",
-            "UserId": "1",
-            "StockId": "1",
-            "Price": 10.6,
-            "Status": "pending",
-            "Amount": 100
-                }
-
-        r = requests.post("https://007investment.table.core.windows.net:443/Transaction?sv=2016-05-31&si=Transaction-15EEC51E092&tn=transaction&sig=G%2BAfHj8oMMxKdTwj93q4KiR7tmnIPJdKkjwyHYdggpM%3D", data=json.dumps(payload), headers=headers)
-        #End Post Request
 
         tmpl = env.get_template('transactionHistory.html')
         return tmpl.render(seq=all_transactions)
@@ -104,7 +92,21 @@ class Landing_Page(object):
                         print(str(transaction.amount)+" "+str(i))
 
         print(companyName+" / "+stockName+" / "+str(stockPrice)+" / "+str(stockPercentage))
+        #Post Request
+        headers = {'Content-Type': 'application/json', 'Accept': 'application/json'}
 
+        payload = {
+            "PartitionKey": "10-2017",
+            "RowKey": "70",
+            "UserId": "1",
+            "StockId": "1",
+            "Price": stockPrice,
+            "Status": "confirmed",
+            "Amount": stockPercentage
+                }
+
+        r = requests.post("https://007investment.table.core.windows.net:443/Transaction?sv=2016-05-31&si=Transaction-15EEC51E092&tn=transaction&sig=G%2BAfHj8oMMxKdTwj93q4KiR7tmnIPJdKkjwyHYdggpM%3D", data=json.dumps(payload), headers=headers)
+        #End Post Request
         tmpl = env.get_template('newTransaction.html')
         return tmpl.render(companyName=companyName,stockName=stockName,stockPrice=stockPrice,stockPercentage=round(stockPercentage,2),transAmount=transAmount,stockAmount=stockAmount,booking_date=str(booking_date).split(' ')[0])
 
