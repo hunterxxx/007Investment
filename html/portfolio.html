@@ -2,7 +2,33 @@
 {% block body %}
 <!-- start: mobile wrapper -->
     <div id="mobile-wrapper">
-        <h1>Portfolio</h1>
+
+        <div class="portfolio">
+            <div class="header">
+                <div class="img-container">
+                  <img src="../assets/images/StatusBar.png"/>
+                </div>
+                <h1>Portfolio</h1>
+            </div>
+            
+            <div class="content">
+                <div class="img-container">
+                  <img id="portfolio-image" src="../assets/images/portfolio@2x.png"/>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="content-wrapper">
+                    <ul>
+                        <li><a href="/portfolio" class="portfolio active">Portfolio</a></li>
+                        <li><a href="/transactionHistory" class="transactions">Transactions</a></li>
+                        <li><a href="#" class="marketplace">Marketplace</a></li>
+                        <li><a href="#" class="settings">Settings</a></li>
+                    <ul>
+                </div>
+            </div>
+        </div>
+    <!-- end: mobile wrapper -->
 
     </div>
 {% endblock %}

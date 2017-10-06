@@ -257,7 +257,7 @@ div.container4 p {
   overflow-y: hidden;
 }
 
-.transaction-history h1 {
+.transaction-history h1, .portfolio h1 {
     color: white;
     text-align: center;
     padding: 1em;
@@ -280,7 +280,7 @@ div.container4 p {
     min-width: 105px;
 }
 
-.transaction-history > .header
+.transaction-history > .header, .portfolio > .header
 {
   position: absolute;
   background-color: rgb(93, 120, 204);
@@ -288,14 +288,14 @@ div.container4 p {
   width: 100%;
 }
 
-.transaction-history .header .img-container
+.transaction-history .header .img-container, .portfolio .header .img-container
 {
   position: absolute;
   top: 0;
   left: .5em;
 }
 
-.transaction-history .footer {
+.transaction-history .footer, .portfolio .footer {
     border-top: 2px solid rgb(247, 247, 247);
     background-image: url('../assets/images/footer-bg.png');
     background-repeat: repeat-y;
@@ -306,18 +306,18 @@ div.container4 p {
     width: 100%;
 }
 
-.transaction-history .footer ul {
+.transaction-history .footer ul, .portfolio .footer ul {
     list-style-type: none;
     margin: 0px;
     padding: 5px 0px 0px 0px;
 }
-.transaction-history .footer li {
+.transaction-history .footer li, .portfolio .footer li {
     margin: 0px;
     padding: 0px;
     display: inline;
     text-align: center;
 }
-.transaction-history .footer a {
+.transaction-history .footer a, .portfolio .footer a{
     display: inline-block;
     min-height: 55px;
     min-width: 85px;
@@ -326,16 +326,16 @@ div.container4 p {
     padding-top: 30px;
 }
 
-.transaction-history .footer a.marketplace {
+.transaction-history .footer a.marketplace, .portfolio .footer a.marketplace {
     background-image: url('../assets/images/marketplace.png');
 }
-.transaction-history .footer a.portfolio {
+.transaction-history .footer a.portfolio, .portfolio .footer a.portfolio {
     background-image: url('../assets/images/portfolio.png');
 }
-.transaction-history .footer a.settings {
+.transaction-history .footer a.settings, .portfolio .footer a.settings {
     background-image: url('../assets/images/settings.png');
 }
-.transaction-history .footer a.transactions {
+.transaction-history .footer a.transactions, .portfolio .footer a.transactions {
     background-image: url('../assets/images/transactions.png');
 }
 
@@ -368,4 +368,9 @@ div.container4 p {
     color: rgb(93, 120, 204);
     font-weight: bold;
     z-index: 10;
+}
+
+#portfolio-image
+{
+  width: 375px;
 }
