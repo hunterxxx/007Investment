@@ -26,7 +26,7 @@ class Landing_Page(object):
     def index(self):
         tmpl = env.get_template('index.html')
         return tmpl.render(name="Apple")
-        
+
     @cherrypy.expose
     def portfolio(self):
         tmpl = env.get_template('portfolio.html')
@@ -46,7 +46,10 @@ class Landing_Page(object):
                 price_paid_long =(float(value['Price'])*float(value['Amount']))
                 price_paid ="{0:.2f}".format(price_paid_long)
                 time_stamp=datetime.datetime.strptime(value['Timestamp'][0:16], "%Y-%m-%dT%H:%M").strftime("%d.%m.%Y %H:%M")
-                time_stamp_purch= datetime.datetime.strptime(value['CreatedDate'][0:16], "%Y-%m-%dT%H:%M").strftime("%d.%m.%Y %H:%M")
+                if value['CreatedDate'][19] is 'Z':
+                    time_stamp_purch= datetime.datetime.strptime(value['CreatedDate'][0:16], "%Y-%m-%dT%H:%M").strftime("%d.%m.%Y %H:%M")
+                else:
+                    time_stamp_purch= datetime.datetime.strptime(value['CreatedDate'], "%m/%d/%Y %I:%M:%S %p").strftime("%d.%m.%Y %H:%M")
                 amount ="{0:.2f}".format(float(value['Amount']))
                 single_transaction = {'Timestamp': time_stamp ,'TimestampPurch':time_stamp_purch, 'StockId': value['StockId'], 'StockPrice': value['Price'], 'Amount': amount, 'MoneySpent': price_paid}
                 all_transactions.append(single_transaction)
@@ -89,6 +92,7 @@ class Landing_Page(object):
                         companyName = name.split(' ')[0]
                         stockName = name
                         stockPrice=stocks['value'][i]['Price']
+                        stockId = stocks['value'][i]['Exchange']
                         stockAmount=(transaction.amount*percentage)
                         stockPercentage=((transaction.amount*percentage)/stocks['value'][i]['Price'])
                         transAmount=-1*transaction.amount
@@ -97,16 +101,24 @@ class Landing_Page(object):
 
         print(companyName+" / "+stockName+" / "+str(stockPrice)+" / "+str(stockPercentage))
         #Post Request
+        url = "https://007investment.table.core.windows.net:443/Transaction?sv=2016-05-31&si=Transaction-15EEC51E092&tn=transaction&sig=G%2BAfHj8oMMxKdTwj93q4KiR7tmnIPJdKkjwyHYdggpM%3D"
+        response = requests.get(url, headers=headers)
+        trans_j = response.json()
+        allRow =[]
+        for value in trans_j['value']:
+            allRow.append(int(value['RowKey']))
+            print(value['RowKey'])
+        rowKey= str(1+allRow.pop())
         headers = {'Content-Type': 'application/json', 'Accept': 'application/json'}
-
         payload = {
             "PartitionKey": "10-2017",
-            "RowKey": "70",
+            "RowKey": rowKey,
             "UserId": "1",
-            "StockId": "1",
+            "StockId": stockId,
             "Price": stockPrice,
             "Status": "confirmed",
-            "Amount": stockPercentage
+            "Amount": stockPercentage,
+            "CreatedDate": datetime.datetime.utcnow().strftime("%m/%d/%Y %I:%M:%S %p")
                 }
 
         r = requests.post("https://007investment.table.core.windows.net:443/Transaction?sv=2016-05-31&si=Transaction-15EEC51E092&tn=transaction&sig=G%2BAfHj8oMMxKdTwj93q4KiR7tmnIPJdKkjwyHYdggpM%3D", data=json.dumps(payload), headers=headers)
