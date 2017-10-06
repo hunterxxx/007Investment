@@ -39,7 +39,7 @@
                 <li class="spec">
                     <div class="left">
                         <p class="title">Original Purchase:</p>
-                        <span class="sub-text">({{booking_date}})</span>
+                        <span class="sub-text">({{ booking_date }})</span>
                     </div><div class="right">
                         <h3 class="amount">{{ transAmount }}€</h3>
                         <span class="sub-text">({{ companyName }})</span>
@@ -47,18 +47,18 @@
                 </li>
                 <li class="spec">
                     <div class="left">
-                        <p class="title">Amount Purchased:</p>
-                    </div><div class="right">
-                        <h3 class="amount">{{ stockPercentage }}</h3>
-                        <span class="sub-text">(shares)</span>
-                   </div>
-                </li>
-                <li class="spec">
-                    <div class="left">
                         <p class="title">Investment Amount:</p>
                    </div><div class="right">
                         <h3 class="amount">{{ stockAmount }}€</h3>
                         <span class="sub-text">(1% of transaction)</span>
+                   </div>
+                </li>
+                <li class="spec">
+                    <div class="left">
+                        <p class="title">Amount Purchased:</p>
+                    </div><div class="right">
+                        <h3 class="amount">{{ stockPercentage }}</h3>
+                        <span class="sub-text">(shares)</span>
                    </div>
                 </li>
             </ul>
