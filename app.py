@@ -44,6 +44,22 @@ class Landing_Page(object):
                 single_transaction = {'Timestamp': time_stamp , 'StockId': value['StockId'], 'StockPrice': value['Price'], 'Amount': value['Amount'], 'MoneySpent': price_paid}
                 all_transactions.append(single_transaction)
 
+        #Post Request
+        headers = {'Content-Type': 'application/json', 'Accept': 'application/json'}
+
+        payload = {
+            "PartitionKey": "10-2017",
+            "RowKey": "55",
+            "UserId": "1",
+            "StockId": "1",
+            "Price": 10.6,
+            "Status": "pending",
+            "Amount": 100
+                }
+
+        r = requests.post("https://007investment.table.core.windows.net:443/Transaction?sv=2016-05-31&si=Transaction-15EEC51E092&tn=transaction&sig=G%2BAfHj8oMMxKdTwj93q4KiR7tmnIPJdKkjwyHYdggpM%3D", data=json.dumps(payload), headers=headers)
+        #End Post Request
+
         tmpl = env.get_template('transactionHistory.html')
         return tmpl.render(seq=all_transactions)
 
@@ -109,10 +125,10 @@ class Landing_Page(object):
 
         r = requests.post("https://007investment.table.core.windows.net:443/Transaction?sv=2016-05-31&si=Transaction-15EEC51E092&tn=transaction&sig=G%2BAfHj8oMMxKdTwj93q4KiR7tmnIPJdKkjwyHYdggpM%3D", data=json.dumps(payload), headers=headers)
         #print(r.url)
-        print(r.text)
-        print(r.status_code)
+        #print(r.text)
+        #print(r.status_code)
         status = r.status_code
-        print(r.headers)
+        #print(r.headers)
         header = r.headers
         text = r.text
         tmpl = env.get_template('post_success.html')
