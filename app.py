@@ -51,7 +51,7 @@ class Landing_Page(object):
                 else:
                     time_stamp_purch= datetime.datetime.strptime(value['CreatedDate'], "%m/%d/%Y %I:%M:%S %p").strftime("%d.%m.%Y %H:%M")
                 amount ="{0:.2f}".format(float(value['Amount']))
-                single_transaction = {'Timestamp': time_stamp ,'TimestampPurch':time_stamp_purch, 'StockId': value['StockId'], 'StockPrice': value['Price'], 'Amount': amount, 'MoneySpent': price_paid}
+                single_transaction = {'Timestamp': time_stamp ,'TimestampPurch':time_stamp_purch, 'StockId': value['StockId'].split(':')[1], 'StockPrice': value['Price'], 'Amount': amount, 'MoneySpent': price_paid}
                 all_transactions.append(single_transaction)
 
         all_transactions = sorted(all_transactions, key=lambda k: k['Timestamp'], reverse=True)
