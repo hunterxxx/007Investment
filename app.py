@@ -45,7 +45,7 @@ class Landing_Page(object):
         for value in trans_j['value']:
                 price_paid_long =(float(value['Price'])*float(value['Amount']))
                 price_paid ="{0:.2f}".format(price_paid_long)
-                time_stamp=datetime.datetime.strptime(value['Timestamp'][0:16], "%Y-%m-%dT%H:%M").strftime("%d.%m.%Y %H:%M")
+                time_stamp=datetime.datetime.strptime(value['Timestamp'][0:16], "%Y-%m-%dT%H:%M")
                 if value['CreatedDate'][19] is 'Z':
                     time_stamp_purch= datetime.datetime.strptime(value['CreatedDate'][0:16], "%Y-%m-%dT%H:%M").strftime("%d.%m.%Y %H:%M")
                 else:
@@ -109,6 +109,7 @@ class Landing_Page(object):
             allRow.append(int(value['RowKey']))
             print(value['RowKey'])
         rowKey= str(1+allRow.pop())
+        time=datetime.datetime.utcnow()
         headers = {'Content-Type': 'application/json', 'Accept': 'application/json'}
         payload = {
             "PartitionKey": "10-2017",
@@ -118,13 +119,13 @@ class Landing_Page(object):
             "Price": stockPrice,
             "Status": "confirmed",
             "Amount": stockPercentage,
-            "CreatedDate": datetime.datetime.utcnow().strftime("%m/%d/%Y %I:%M:%S %p")
+            "CreatedDate": time.strftime("%m/%d/%Y %I:%M:%S %p")
                 }
 
         r = requests.post("https://007investment.table.core.windows.net:443/Transaction?sv=2016-05-31&si=Transaction-15EEC51E092&tn=transaction&sig=G%2BAfHj8oMMxKdTwj93q4KiR7tmnIPJdKkjwyHYdggpM%3D", data=json.dumps(payload), headers=headers)
         #End Post Request
         tmpl = env.get_template('newTransaction.html')
-        return tmpl.render(companyName=companyName,stockName=stockName,stockPrice=stockPrice,stockPercentage=round(stockPercentage,2),transAmount=transAmount,stockAmount=stockAmount,booking_date=str(booking_date).split(' ')[0])
+        return tmpl.render(companyName=companyName,stockName=stockName,stockPrice=stockPrice,stockPercentage=round(stockPercentage,2),transAmount=transAmount,stockAmount=stockAmount,booking_date=time.strftime("%d.%m.%Y %H:%M"))
 
 
     @cherrypy.expose
