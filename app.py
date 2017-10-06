@@ -48,6 +48,7 @@ class Landing_Page(object):
                 single_transaction = {'Timestamp': time_stamp ,'TimestampPurch':time_stamp_purch, 'StockId': value['StockId'], 'StockPrice': value['Price'], 'Amount': amount, 'MoneySpent': price_paid}
                 all_transactions.append(single_transaction)
 
+        all_transactions = sorted(all_transactions, key=lambda k: k['Timestamp'], reverse=True) 
         tmpl = env.get_template('transactionHistory.html')
         return tmpl.render(seq=all_transactions)
 
