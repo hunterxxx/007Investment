@@ -221,6 +221,19 @@ h1, h2, h3
 {
   vertical-align: top;
 }
+div.tradingview{
+}
+
+div.container4 p {
+    margin: 0;
+    background: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: white;
+    margin-right: -50%;
+    transform: translate(40%, -285%) 
+}
 
 .transaction-history
 {
