@@ -1,73 +1,57 @@
 {% extends "layout.html" %}
 {% block body %}
-<!-- start: mobile wrapper -->
-<div id="mobile-wrapper">
-    <div class="new-transaction">
-        <!-- TradingView Widget BEGIN -->
-        <div class="tradingview">
-            <div id="tv-medium-widget-21229"></div>
-            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-            <script type="text/javascript">
-                new TradingView.MediumWidget({
-                  "container_id": "tv-medium-widget-21229",
-                  "symbols": [
-                  [
-                  "Apple",
-                  "AAPL "
-                  ]
-                  ],
-                  "gridLineColor": "#e9e9ea",
-                  "fontColor": "#83888D",
-                  "underLineColor": "#dbeffb",
-                  "trendLineColor": "#4bafe9",
-                  "width": "375px",
-                  "height": "300px",
-                  "locale": "en"
-              });
-          </script>
-      </div>
-      <!-- TradingView Widget END -->
-      <div class=container4>
-        <p>Last Christmas I did!</p>
-      </div>  
-      <div class="tabs-container">
-        <ul class="tabs">
-            <li class="active">Buy Stock</li>
-            <li>Stock Trends</li>
-        </ul>
-    </div>
-    <div class="content">
-        <div class="specs-container">
-            <ul class="specs">
-                <li class="spec">
-                    <div class="left">
-                        <p class="title">Original Purchase:</p>
-                        <span class="sub-text">({{booking_date}})</span>
+    <!-- start: mobile wrapper -->
+    <div id="mobile-wrapper">
+        <div class="new-transaction">
+            <div class="header">
+                <div class="content-wrapper">
+                    <div class="spec">
+                        <div class="left">
+                            <h3 class="stock-abbr">AAPL</h3>
+                            <span class="sub-text">Today: 9:41am</span>
+                        </div><div class="right">
+                            <h3 class="stock-abbr">155.25</h3>
+                            <span class="sub-text">+1.77 (1.16%)</span>
+                        </div>
                     </div>
-                    <div class="right">
-                        <h3 class="amount">{{ transAmount }}€</h3>
-                        <span class="sub-text">({{ companyName }})</span>
-                    </div>
-                </li>
-                <li class="spec">
-                    <div class="left">
-                        <p class="title">Amount Purchased:</p>
-                    </div>
-                    <div class="right">
-                        <h3 class="amount">{{ stockPercentage }}</h3>
-                        <span class="sub-text">(shares)</span>
-                    </div>
-                </li>
-                <li class="spec">
-                    <div class="left">
-                        <p class="title">Investment Amount:</p>
-                    </div>
-                    <div class="right">
-                        <h3 class="amount">{{ stockAmount }}€</h3>
-                        <span class="sub-text">(1% of transaction)</span>
-                    </div>
-                </li>
-            </ul>
+                </div>
+            </div>
+            <div class="tabs-container">
+                <ul class="tabs">
+                    <li class="active">Buy Stock</li>
+                    <li>Stock Trends</li>
+                </ul>
+            </div>
+            <div class="content">
+                <div class="specs-container">
+                    <ul class="specs">
+                        <li class="spec">
+                            <div class="left">
+                                <p class="title">Original Purchase:</p>
+                                <span class="sub-text">({{booking_date}})</span>
+                            </div><div class="right">
+                                <h3 class="amount">{{ transAmount }}€</h3>
+                                <span class="sub-text">({{ companyName }})</span>
+                            </div>
+                        </li>
+                        <li class="spec">
+                            <div class="left">
+                                <p class="title">Amount Purchased:</p>
+                            </div><div class="right">
+                                <h3 class="amount">{{ stockPercentage }}</h3>
+                                <span class="sub-text">(shares)</span>
+                           </div>
+                        </li>
+                        <li class="spec">
+                            <div class="left">
+                                <p class="title">Investment Amount:</p>
+                           </div><div class="right">
+                                <h3 class="amount">{{ stockAmount }}€</h3>
+                                <span class="sub-text">(1% of transaction)</span>
+                           </div>
+                        </li>
+                    </ul>
+                </div>
             <div class="btn-container">
                 <a href="/transactionHistory"class="btn btn-primary btn-block">Purchase Stock</a>
             </div>

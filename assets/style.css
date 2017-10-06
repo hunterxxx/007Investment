@@ -68,6 +68,7 @@ h1, h2, h3
 {
     background: black;
     height: 100%;
+    position: relative;
 }
 
 /* START PAGE */
@@ -157,7 +158,7 @@ h1, h2, h3
   margin-bottom: 0;
 }
 
-.new-transaction .content, .transaction-history .content
+.new-transaction .content
 {
   padding: 1em;
   flex: 1 0 auto;
@@ -234,5 +235,121 @@ div.container4 p {
     transform: translate(40%, -285%) 
 }
 
+.transaction-history
+{
+  position: relative;
+  overflow-y: hidden;
+}
 
+.transaction-history h1 {
+    color: white;
+    text-align: center;
+    padding: 1em;
+    font-size: 1em;
+}
 
+.transaction-history .tabs ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px 0px 5px 0px;
+}
+.transaction-history .tabs li {
+    margin: 0px;
+    padding: 0px;
+    display: inline;
+    text-align: center;
+}
+.transaction-history .tabs a {
+    display: inline-block;
+    min-width: 105px;
+}
+
+.transaction-history > .header
+{
+  position: absolute;
+  background-color: rgb(93, 120, 204);
+  padding-top: 1.5em;
+  width: 100%;
+}
+
+.transaction-history .header .img-container
+{
+  position: absolute;
+  top: 0;
+  left: .5em;
+}
+
+.transaction-history .footer {
+    border-top: 2px solid rgb(247, 247, 247);
+    background-image: url('../assets/images/footer-bg.png');
+    background-repeat: repeat-y;
+    position: absolute;
+    bottom: 0;
+    padding-top: .5em;
+    border-top: 1px solid #ccc;
+    width: 100%;
+}
+
+.transaction-history .footer ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 5px 0px 0px 0px;
+}
+.transaction-history .footer li {
+    margin: 0px;
+    padding: 0px;
+    display: inline;
+    text-align: center;
+}
+.transaction-history .footer a {
+    display: inline-block;
+    min-height: 55px;
+    min-width: 85px;
+    background-position:  center top;
+    background-repeat: no-repeat;
+    padding-top: 30px;
+}
+
+.transaction-history .footer a.marketplace {
+    background-image: url('../assets/images/marketplace.png');
+}
+.transaction-history .footer a.portfolio {
+    background-image: url('../assets/images/portfolio.png');
+}
+.transaction-history .footer a.settings {
+    background-image: url('../assets/images/settings.png');
+}
+.transaction-history .footer a.transactions {
+    background-image: url('../assets/images/transactions.png');
+}
+
+.transaction-history .content
+{
+  padding: 1em;
+  overflow-y: auto;
+  margin-top: 4.5em;
+  margin-bottom: 4em;
+}
+
+/*
+.transaction-history .footer a.active, .transaction-history .footer:hover {
+    background-image: url('../assets/images/star-active.png');
+}
+*/
+
+.message-popover {
+    position: absolute;
+    width: 375px;
+    height: 667px;
+    background-color: rgba(255, 255, 255, 0.75);
+    font-size: 22pt;
+    text-transform: uppercase;
+    background-image: url('../assets/images/checkMark.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding-top: 400px;
+    color: rgb(93, 120, 204);
+    font-weight: bold;
+    z-index: 10;
+}

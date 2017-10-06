@@ -2,22 +2,35 @@
 {% block body %}
 <!-- start: mobile wrapper -->
     <div id="mobile-wrapper">
+        <div class="message-popover">Purchase<br />succesful!</div>
+        
         <div class="transaction-history">
             <div class="header">
-                <!-- add images here -->
+                <div class="img-container">
+                  <img src="../assets/images/StatusBar.png"/>
+                </div>
+                <h1>Transaction History</h1>
             </div>
+            
             <div class="content">
                 <div class="transactions-container">
-                    <ul class="transactions">
-                      <h1>Transaction History</h1>
+                    <div class="transactions">
 
+                        <div class="tabs">
+                            <div class="content-wrapper">
+                                <ul>
+                                    <li><a href="#" class="pending">Pending</a></li>
+                                    <li><a href="#" class="confirmed active btn btn-primary">Confirmed</a></li>
+                                    <li><a href="#" class="denied">Denied</a></li>
+                                <ul>
+                            </div>
+                        </div>
 
                         {% for item in seq %}
                           <li class="transaction">
                                 <div class="header spec">
                                   <div class="left">
                                       <h3 class="stock-abbrev">{{item['StockId']}}</h3>
-                               <!--        <h3 class="stock-abbrev">{{item['StockId']}}</h3>-->
                                     </div>
                                     <div class="right">
                                       <a href='#'>View transaction details</a>
@@ -31,8 +44,7 @@
                                     <div class="left">
                                       <h3 class="amount">{{ item['MoneySpent'] }}€</h3>
                                       <span class="sub-text">(Amount paid)</span>
-                                    </div>
-                                    <div class="right">
+                                    </div><div class="right">
                                       <h3 class="amount">{{ item['Amount'] }}</h3>
                                       <span class="sub-text">(# of shares)</span>
                                     </div>
@@ -42,7 +54,21 @@
                     </ul>
                 </div>
             </div>
+
         </div>
+
+        <div class="footer">
+            <div class="content-wrapper">
+                <ul>
+                    <li><a href="#" class="portfolio active">Portfolio</a></li>
+                    <li><a href="#" class="transactions">Transactions</a></li>
+                    <li><a href="#" class="marketplace">Marketplace</a></li>
+                    <li><a href="#" class="settings">Settings</a></li>
+                <ul>
+            </div>
+        </div>
+
     <!-- end: mobile wrapper -->
+
     </div>
 {% endblock %}
