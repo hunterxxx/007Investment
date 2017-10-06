@@ -338,7 +338,6 @@ div.container4 p {
 */
 
 .message-popover {
-    display: none;
     position: absolute;
     width: 375px;
     height: 667px;
@@ -352,4 +351,5 @@ div.container4 p {
     padding-top: 400px;
     color: rgb(93, 120, 204);
     font-weight: bold;
+    z-index: 10;
 }
